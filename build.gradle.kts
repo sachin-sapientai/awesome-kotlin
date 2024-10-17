@@ -41,6 +41,32 @@ dependencies {
     implementation("io.ktor:ktor-client-apache:2.3.12")
     implementation("io.ktor:ktor-client-jackson:2.3.12")
 
-    testImplementation("io.mockk:mockk:1.13.12")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.2")
+
+    testImplementation(kotlin("test"))
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3") // Use 'implementation' instead of 'runtimeOnly'y
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.14")
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.2")
+    // https://mvnrepository.com/artifact/io.mockk/mockk
+    testImplementation("io.mockk:mockk:1.13.13")
+    // https://mvnrepository.com/artifact/io.strikt/strikt-core
+    implementation("io.strikt:strikt-core:0.35.1")
+    // https://mvnrepository.com/artifact/io.kotest/kotest-core
+    implementation("io.kotest:kotest-core:4.2.0.RC2")
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+    implementation("org.jetbrains.kotlin:kotlin-maven-plugin:2.1.0-Beta2")
+    // https://mvnrepository.com/artifact/io.kotest/kotest-assertions-core-jvm
+    testImplementation("io.kotest:kotest-assertions-core-jvm:6.0.0.M1")
+// https://mvnrepository.com/artifact/io.kotest/kotest-property
+    runtimeOnly("io.kotest:kotest-property:6.0.0.M1")
+// https://mvnrepository.com/artifact/io.kotest.extensions/kotest-property-arbs
+    implementation("io.kotest.extensions:kotest-property-arbs:2.1.2")
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testImplementation("org.mockito:mockito-core:5.14.2")
+
+
+
+
 }
