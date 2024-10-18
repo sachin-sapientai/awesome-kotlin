@@ -1,0 +1,20 @@
+Method:  `process should update article with rendered HTML`() = runBlocking
+Execution Failure:org.opentest4j.AssertionFailedError: expected: <test-article.html> but was: <Test-Article.html>
+
+
+
+Method:    fun `getFileName should generate correct filename`(title: String, expected: String)
+Execution Failure:
+Execution Failure:org.opentest4j.AssertionFailedError:expected: <simple-title.html> but was: <Simple-Title.html>
+Execution Failure:org.opentest4j.AssertionFailedError:expected: <title-with-spaces.html> but was: <Title-with-Spaces.html>
+Execution Failure:org.opentest4j.AssertionFailedError:expected: <title-with-numbers-123.html> but was: <Title-with-Numbers-123.html>
+Execution Failure:org.opentest4j.AssertionFailedError:expected: <title-with-symbols.html> but was: <Title-with-Symbols-.html>
+Execution Failure:org.opentest4j.AssertionFailedError: expected: <zagolovok-na-russkom.html> but was: <Zagolovok-na-russkom.html>
+
+Method:   fun `translit should correctly transliterate Russian characters`()
+Execution Failure: org.opentest4j.AssertionFailedError: expected: <Kotlin - otlichnyy yazyk programmirovaniya> but was: <Kotlin - otlichnyiy yazyik programmirovaniya>
+
+
+Method:  fun `getFileName should handle edge cases with dashes`(title: String)
+Execution Failure:org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+
