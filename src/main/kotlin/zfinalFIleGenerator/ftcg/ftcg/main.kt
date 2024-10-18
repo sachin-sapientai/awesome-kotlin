@@ -1,5 +1,7 @@
-package org.example.zfinalFIleGenerator
+package zfinalFIleGenerator.ftcg.ftcg
 
+
+import zfinalFIleGenerator.ftcg.common.LlmApiClient
 import java.nio.file.Files
 import java.nio.file.Paths
 

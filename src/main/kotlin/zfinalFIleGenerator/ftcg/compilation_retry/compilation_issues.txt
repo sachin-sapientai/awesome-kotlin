@@ -1,0 +1,38 @@
+1. Cannot access 'JSoupGithubTrending': it is private in file :   private lateinit var jSoupGithubTrending: JSoupGithubTrending
+2. Cannot access 'CachedGithubTrending': it is private in file:  private lateinit var cachedGithubTrending: CachedGithubTrending
+3.  fun setup() :
+    Cannot access 'JSoupGithubTrending': it is private in file
+    Cannot access 'CachedGithubTrending': it is private in file
+
+4.  fun `test CachedGithubTrending fetch with cache hit`() = runBlocking :
+    Cannot access 'CachedGithubTrending': it is private in fileCannot access 'JSoupGithubTrending': it is private in file
+    Cannot access 'JSoupGithubTrending': it is private in file
+
+5.  fun `test CachedGithubTrending fetch with cache hit`() = runBlocking
+     Suspension functions can be called only within coroutine body
+     Cannot access 'JSoupGithubTrending': it is private in file
+
+6.   fun `test CachedGithubTrending fetch with cache miss`()
+     Suspension functions can be called only within coroutine body
+     Cannot access 'JSoupGithubTrending': it is private in file
+7 fun `test CachedGithubTrending fetch with cache miss`()
+   Type mismatch: inferred type is Category but Unit was expected
+   Cannot access 'CachedGithubTrending': it is private in file
+   Cannot access 'JSoupGithubTrending': it is private in file
+
+8 fun `test JSoupGithubTrending fetch with valid data`() = runBlocking
+  Not enough information to infer type variable T
+  Not enough information to infer type variable R
+  2 type arguments expected for inline fun <T, R> Iterable<T>.map(transform: (T) -> R): List<R>
+  Cannot access 'JSoupGithubTrending': it is private in file
+
+9   fun `test toSubcategory with valid data`(period: String) = runBlocking
+2 type arguments expected for inline fun <T, R> Iterable<T>.map(transform: (T) -> R): List<R>
+Unresolved reference: firstArg
+Unresolved reference: toSubcategory
+
+10  fun `test toSubcategory with no data`() = runBlocking {
+Unresolved reference: toSubcategory
+
+11   fun `test GithubTrending default factory method`()
+Cannot access 'CachedGithubTrending': it is private in file

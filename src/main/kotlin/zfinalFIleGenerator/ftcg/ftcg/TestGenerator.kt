@@ -1,5 +1,6 @@
-package org.example.zfinalFIleGenerator
+package zfinalFIleGenerator.ftcg.ftcg
 
+import zfinalFIleGenerator.ftcg.common.LlmApiClient
 import java.io.File
 
 class TestGenerator(private val llmClient: LlmApiClient, private val promptGenerator: PromptGenerator) {

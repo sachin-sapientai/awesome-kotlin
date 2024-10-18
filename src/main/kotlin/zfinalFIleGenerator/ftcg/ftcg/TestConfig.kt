@@ -1,4 +1,4 @@
-package org.example.zfinalFIleGenerator
+package zfinalFIleGenerator.ftcg.ftcg
 
 data class TestConfig(
     val sourceFileName: String,

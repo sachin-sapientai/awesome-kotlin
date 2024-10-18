@@ -1,4 +1,6 @@
-package org.example.zfinalFIleGenerator
+package zfinalFIleGenerator.ftcg.ftcg
+
+import zfinalFIleGenerator.ftcg.common.LlmApiClient
 
 
 class PromptGenerator {
