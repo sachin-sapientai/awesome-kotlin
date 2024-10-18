@@ -29,38 +29,33 @@ class AwesomeScriptSapientGeneratedTest {
         assertEquals(LinkScriptCompilationConfiguration::class, kotlinScriptAnnotation.compilationConfiguration)
     }
 
-//    @Test
-//    fun `test LinkScriptCompilationConfiguration default imports`() {
-//        val defaultImports = LinkScriptCompilationConfiguration.body.entries
-//            .find { it.key == ScriptCompilationConfiguration.defaultImports }
-//            ?.value as? List<String>
-//
-//        assertNotNull(defaultImports)
-//        assertTrue(defaultImports!!.contains("link.kotlin.scripts.dsl.*"))
-//        assertTrue(defaultImports.contains("link.kotlin.scripts.dsl.PlatformType.*"))
-//        PlatformType.values().forEach { platformType ->
-//            assertTrue(defaultImports.contains("link.kotlin.scripts.dsl.PlatformType.$platformType"))
-//        }
-//    }
+    @Test
+    fun `test LinkScriptCompilationConfiguration default imports`() {
+        val defaultImports = LinkScriptCompilationConfiguration[ScriptCompilationConfiguration.defaultImports]
+
+        assertNotNull(defaultImports)
+        assertTrue(defaultImports!!.contains("link.kotlin.scripts.dsl.*"))
+        assertTrue(defaultImports.contains("link.kotlin.scripts.dsl.PlatformType.*"))
+        PlatformType.values().forEach { platformType ->
+            assertTrue(defaultImports.contains("link.kotlin.scripts.dsl.PlatformType.$platformType"))
+        }
+    }
 
 //    @Test
 //    fun `test LinkScriptCompilationConfiguration JVM configuration`() {
-//        val jvmConfig = LinkScriptCompilationConfiguration.body.entries
-//            .find { it.key == ScriptCompilationConfiguration.jvm }
-//            ?.value as? ScriptCompilationConfiguration.Builder.() -> Unit
+//        val jvmConfig = LinkScriptCompilationConfiguration[ScriptCompilationConfiguration.jvm]
 //
 //        assertNotNull(jvmConfig)
 //
-//        val testConfiguration = ScriptCompilationConfiguration()
-//        jvmConfig!!(ScriptCompilationConfiguration.Builder(testConfiguration))
+//        val testConfiguration = ScriptCompilationConfiguration(body = jvmConfig!!)
 //
 //        val dependenciesFromContext = testConfiguration[ScriptCompilationConfiguration.dependencies]
-//            ?.filterIsInstance<JvmDependencyFromClassContext>()
+//            ?.filterIsInstance<ScriptDependenciesFromClassContext>()
 //            ?.firstOrNull()
 //
 //        assertNotNull(dependenciesFromContext)
-//        assertEquals(AwesomeScript::class, dependenciesFromContext?.wholeClasspath)
-//        assertEquals(listOf("awesome-kotlin", "kotlin-stdlib"), dependenciesFromContext?.libraries)
+//        assertEquals(AwesomeScript::class, dependenciesFromContext?.baseClass)
+//        assertEquals(listOf("awesome-kotlin", "kotlin-stdlib"), dependenciesFromContext?.classpath)
 //
 //        val compilerOptions = testConfiguration[ScriptCompilationConfiguration.compilerOptions]
 //        assertTrue(compilerOptions?.contains("-Xskip-prerelease-check") == true)
@@ -69,16 +64,13 @@ class AwesomeScriptSapientGeneratedTest {
 //
 //    @Test
 //    fun `test LinkScriptCompilationConfiguration IDE configuration`() {
-//        val ideConfig = LinkScriptCompilationConfiguration.body.entries
-//            .find { it.key == ScriptCompilationConfiguration.ide }
-//            ?.value as? ScriptCompilationConfiguration.Builder.() -> Unit
+//        val ideConfig = LinkScriptCompilationConfiguration[ScriptCompilationConfiguration.ide]
 //
 //        assertNotNull(ideConfig)
 //
-//        val testConfiguration = ScriptCompilationConfiguration()
-//        ideConfig!!(ScriptCompilationConfiguration.Builder(testConfiguration))
+//        val testConfiguration = ScriptCompilationConfiguration(body = ideConfig!!)
 //
-//        val acceptedLocations = testConfiguration[ScriptCompilationConfiguration.acceptedLocations]
+//        val acceptedLocations = testConfiguration[ScriptCompilationConfiguration.ide]?.get(ScriptCompilationConfiguration.acceptedLocations)
 //        assertEquals(listOf(ScriptAcceptedLocation.Project), acceptedLocations)
 //    }
 

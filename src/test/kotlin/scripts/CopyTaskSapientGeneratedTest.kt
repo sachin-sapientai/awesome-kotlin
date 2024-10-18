@@ -13,6 +13,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption.REPLACE_EXISTING
+import java.nio.file.NoSuchFileException
+import java.nio.file.AccessDeniedException
 import kotlin.test.assertTrue
 
 class CopyTaskSapientGeneratedTest {
@@ -28,48 +30,48 @@ class CopyTaskSapientGeneratedTest {
         unmockkAll()
     }
 
-//    @Test
-//    fun `copyResources copies files correctly`() {
-//        val fromPath = mockk<Path>()
-//        val toPath = mockk<Path>()
-//
-//        every { Paths.get("from.txt") } returns fromPath
-//        every { Paths.get("to.txt") } returns toPath
-//        every { Files.copy(fromPath, toPath, REPLACE_EXISTING) } just Runs
-//
-//        copyResources("from.txt" to "to.txt")
-//
-//        verify(exactly = 1) { Files.copy(fromPath, toPath, REPLACE_EXISTING) }
-//    }
+    @Test
+    fun `copyResources copies files correctly`() {
+        val fromPath = mockk<Path>()
+        val toPath = mockk<Path>()
 
-//    @ParameterizedTest
-//    @MethodSource("provideMultipleMappings")
-//    fun `copyResources handles multiple mappings`(mappings: Array<Pair<String, String>>) {
-//        val paths = mappings.flatMap { listOf(it.first, it.second) }.map { mockk<Path>() }
-//        val pathIterator = paths.iterator()
-//
-//        every { Paths.get(any()) } answers { pathIterator.next() }
-//        every { Files.copy(any(), any(), REPLACE_EXISTING) } just Runs
-//
-//        copyResources(*mappings)
-//
-//        verify(exactly = mappings.size) { Files.copy(any(), any(), REPLACE_EXISTING) }
-//    }
-//
-//    @Test
-//    fun `copyResources throws exception for invalid paths`() {
-//        every { Paths.get(any()) } throws IllegalArgumentException("Invalid path")
-//
-//        assertThrows<IllegalArgumentException> {
-//            copyResources("invalid" to "path")
-//        }
-//    }
-//
-//    @Test
-//    fun `copyResources handles empty input`() {
-//        copyResources()
-//        verify(exactly = 0) { Files.copy(any(), any(), any()) }
-//    }
+        every { Paths.get("from.txt") } returns fromPath
+        every { Paths.get("to.txt") } returns toPath
+        every { Files.copy(fromPath, toPath, REPLACE_EXISTING) } returns toPath
+
+        copyResources("from.txt" to "to.txt")
+
+        verify(exactly = 1) { Files.copy(fromPath, toPath, REPLACE_EXISTING) }
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideMultipleMappings")
+    fun `copyResources handles multiple mappings`(mappings: Array<Pair<String, String>>) {
+        val paths = mappings.flatMap { listOf(it.first, it.second) }.map { mockk<Path>() }
+        val pathIterator = paths.iterator()
+
+        every { Paths.get(any<String>()) } answers { pathIterator.next() }
+        every { Files.copy(any<Path>(), any(), REPLACE_EXISTING) } returns mockk()
+
+        copyResources(*mappings)
+
+        verify(exactly = mappings.size) { Files.copy(any<Path>(), any(), REPLACE_EXISTING) }
+    }
+
+    @Test
+    fun `copyResources throws exception for invalid paths`() {
+        every { Paths.get(any<String>()) } throws IllegalArgumentException("Invalid path")
+
+        assertThrows<IllegalArgumentException> {
+            copyResources("invalid" to "path")
+        }
+    }
+
+    @Test
+    fun `copyResources handles empty input`() {
+        copyResources()
+        verify(exactly = 0) { Files.copy(any<Path>(), any(), any()) }
+    }
 
 //    @Test
 //    fun `copyResources handles file not found`() {
@@ -92,7 +94,7 @@ class CopyTaskSapientGeneratedTest {
 //
 //        every { Paths.get("from.txt") } returns fromPath
 //        every { Paths.get("restricted.txt") } returns toPath
-//        every { Files.copy(fromPath, toPath, REPLACE_EXISTING) } throws AccessDeniedException(toPath.toString())
+//        every { Files.copy(fromPath, toPath, REPLACE_EXISTING) } throws AccessDeniedException(toPath)
 //
 //        assertThrows<AccessDeniedException> {
 //            copyResources("from.txt" to "restricted.txt")
