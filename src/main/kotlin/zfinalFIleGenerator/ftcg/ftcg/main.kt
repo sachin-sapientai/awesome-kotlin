@@ -16,7 +16,7 @@ fun main() {
     // Ensure the test directory exists
     Files.createDirectories(testPath)
 
-    val bearerToken = "ya29.a0AcM612wb3x4rs8OAJfTs1BiZu1uG17Yirh_HkH7xHDYygs06NF3f5-tSCRQ5ansopTcrOSOmTti9-7r_-1yrcWH04U_cBt23ta9cLtTRCURXnEG01yoDuPlO4HcgRGXdrYn4Q5RYThaUV-R3fLPNPsa7WXc8tyZ6xH73F-ChHBoXDLc4aCgYKAfUSARISFQHGX2Mi4bseyvdofRDDxlhIHpq7pA0183"
+    val bearerToken = "xxx"
     val llmClient = LlmApiClient(bearerToken)
     val promptGenerator = PromptGenerator()
     val testGenerator = TestGenerator(llmClient, promptGenerator)

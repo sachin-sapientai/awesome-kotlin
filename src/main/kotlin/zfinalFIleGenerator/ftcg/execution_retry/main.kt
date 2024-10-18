@@ -14,7 +14,7 @@ fun main() {
     val dslFilePath = "/Users/sachinkumar/Desktop/kotlin_llm_poc/awesome-kotlin/src/main/kotlin/link/kotlin/scripts/dsl/DSL.kt"
 
     // Initialize clients and generators
-    val bearerToken = "ya29.a0AcM612zy-KeqJ4wm1qRYqr1H72rJyNJNJ01706DmWH_VuWwk5jvEuk0MyAJ1HJyh9Cf9I1y8xZM9rfnugZumeP0o_MJfcGMM8BWwUy5yhUCsI1nXJ2OKdtVrUmTIhZakTSn08VsFKr5OiDLSGhy2s87hCRalASrASueaOFuo4vNsQdhOaCgYKAfcSARISFQHGX2MilO36gOgto29c-88zudIeFg0183"
+    val bearerToken = "xxx"
     val llmClient = LlmApiClient(bearerToken)
     val promptGenerator = ExecutionPromptGenerator()
     val testGenerator = ExecutionTestGenerator(llmClient, promptGenerator)
